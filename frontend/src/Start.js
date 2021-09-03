@@ -7,7 +7,9 @@ const Start = () => {
   return (
     <BrowserRouter>
       <NavBar />
-      <Routes />
+      <div className="container">
+        <Routes />
+      </div>
     </BrowserRouter>
   );
 };

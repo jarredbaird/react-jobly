@@ -1,35 +1,50 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./NavBar.css";
 import { NavLink, Link } from "react-router-dom";
-import { Navbar, Nav, NavItem } from "reactstrap";
 
 function NavBar() {
   return (
-    <div>
-      <Navbar expand="md" className="Nav">
-        <Link exact to="/" className="navbar-brand">
-          Snack or Booze
-        </Link>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <Link exact to="/" className="navbar-brand">
+        Jobly
+      </Link>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
 
-        <Nav className="ml-auto" navbar>
-          <NavItem className="nav-item mr-4">
-            <NavLink className="nav-link" to="/other/add">
-              Add An Item
+      <div className="collapse navbar-collapse" id="navbarText">
+        <ul className="navbar-nav">
+          <li className="nav-item mr-4">
+            <NavLink className="nav-link" to="/companies">
+              Companies
             </NavLink>
-          </NavItem>
-          <NavItem className="nav-item mr-4">
-            <NavLink className="nav-link" to="/other/add">
-              Things
+          </li>
+          <li className="nav-item mr-4">
+            <NavLink className="nav-link" to="/jobs">
+              Jobs
             </NavLink>
-          </NavItem>
-          <NavItem className="nav-item mr-4">
-            <NavLink className="nav-link" to="/another/add">
-              Wow
+          </li>
+          <li className="nav-item mr-4">
+            <NavLink className="nav-link" to="/profile">
+              Profile
             </NavLink>
-          </NavItem>
-        </Nav>
-      </Navbar>
-    </div>
+          </li>
+          <li className="nav-item mr-4">
+            <NavLink className="nav-link" to="/logout">
+              Log out
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 }
 
