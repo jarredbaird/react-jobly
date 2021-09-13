@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import useToggleState from "./useToggleState";
 import { useParams } from "react-router-dom";
-import CompanyDetailModal from "./CompanyDetailModal.js";
-import JobDetailModal from "./JobDetailModal.js";
+import CompanyDetailModal from "./companies/CompanyDetailModal.js";
+import JobDetailModal from "./jobs/JobDetailModal.js";
 
 const Modal = () => {
   const [showModal, toggleShowModal] = useState(true);
   const toggle = () => {
     toggleShowModal(!showModal);
   };
-  console.log(useParams());
+
   const { jobid } = useParams();
-  console.log(jobid);
+
   return (
     <div className="modal" style={{ display: "block" }} tabindex="-1">
       <div className="modal-dialog">

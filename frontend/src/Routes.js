@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import Home from "./Home.js";
-import Companies from "./Companies.js";
-import Jobs from "./Jobs.js";
+import Companies from "./companies/Companies.js";
+import Jobs from "./jobs/Jobs.js";
 import Profile from "./Profile.js";
 import SearchBar from "./SearchBar.js";
 import Modal from "./Modal.js";
