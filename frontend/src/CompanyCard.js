@@ -14,10 +14,16 @@ const CompanyCard = () => {
         <p className="card-text">
           With supporting text below as a natural lead-in to additional content.
         </p>
-        <button class="btn btn-primary">Button</button>
-        <button type="button" class="btn btn-primary" onClick={toggle}>
-          Launch demo modal
-        </button>
+        <div
+          class="btn-group"
+          role="group"
+          aria-label="Basic mixed styles example"
+        >
+          <button class="btn btn-primary">Button</button>
+          <button type="button" class="btn btn-primary" onClick={toggle}>
+            Launch demo modal
+          </button>
+        </div>
       </div>
       {console.log(showModal)}
       {showModal ? <Modal actions={toggle} /> : null}

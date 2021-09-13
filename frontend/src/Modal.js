@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useToggleState from "./useToggleState";
 import { useParams } from "react-router-dom";
 import CompanyDetailModal from "./CompanyDetailModal.js";
 import JobDetailModal from "./JobDetailModal.js";
