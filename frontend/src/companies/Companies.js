@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import CompanyCard from "./CompanyCard.js";
-import useToggleState from "../useToggleState.js";
+import useShowProp from "../useShowProp.js";
 import ModalContext from "../ModalContext.js";
 import JoblyApi from "../api/api";
 
 const Companies = () => {
   const INITIAL_STATE = [];
-  const [showModal, toggleShowModal] = useToggleState(false);
-  const [companies, setCompanies] = useState(INITIAL_STATE);
+  const [companies, setCompanies] = useShowProp(INITIAL_STATE);
 
   useEffect(function getCompaniesOnLoad() {
     find();
@@ -18,10 +17,11 @@ const Companies = () => {
     setCompanies(companies);
   }
 
-  debugger;
   return (
-    <ModalContext.Provider value={{ showModal, toggleShowModal, companies }}>
-      <CompanyCard />
+    <ModalContext.Provider value={{ companies, setCompanies }}>
+      {companies.map((company) => {
+        return <CompanyCard key={company.handle} company={company} />;
+      })}
     </ModalContext.Provider>
   );
 };

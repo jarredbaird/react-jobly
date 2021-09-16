@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import ModalContext from "../ModalContext";
 
-const CompanyDetailModal = ({ actions }) => {
+const CompanyDetailModal = ({ company }) => {
+  const {
+    handle,
+    name,
+    description,
+    num_employees,
+    logo_url = "",
+    show,
+  } = company;
+  const [companies, setCompanies] = useContext(ModalContext);
+
+  const toggleModal = () => {
+    setCompanies(companies);
+  };
+
   return (
     <>
       <div className="modal-header">
@@ -11,11 +26,15 @@ const CompanyDetailModal = ({ actions }) => {
         <p>I'm the best company in the world</p>
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" onClick={actions}>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={toggleModal}
+        >
           Close
         </button>
         <button type="button" className="btn btn-primary">
-          Save changes
+          See Jobs
         </button>
       </div>
     </>

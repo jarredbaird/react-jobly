@@ -3,28 +3,39 @@ import "../Card.css";
 import Modal from "../Modal.js";
 import ModalContext from "../ModalContext";
 
-const CompanyCard = () => {
-  const { showModal, toggleShowModal } = useContext(ModalContext);
+const CompanyCard = ({ company }) => {
+  const {
+    handle,
+    name,
+    description,
+    num_employees,
+    logo_url = "",
+    show,
+  } = company;
+  const [companies, setCompanies] = useContext(ModalContext);
+
+  const toggleModal = () => {
+    setCompanies(companies, handle, !show);
+  };
+
   return (
     <div className="container">
-      <div className="card Card">
-        <h5 className="card-title">Special Title Treatment</h5>
-        <p className="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
+      <div className="card Card p-1">
+        <h5 className="card-title">{name}</h5>
+        <p className="card-text">{description}</p>
         <div
-          class="btn-group m-1"
+          className="btn-group"
           role="group"
           aria-label="Basic mixed styles example"
         >
-          <button class="btn btn-primary">See Jobs</button>
-          <button type="button" class="btn btn-info" onClick={toggleShowModal}>
+          <button className="btn btn-primary">See Jobs</button>
+          <button onClick={toggleModal} type="button" className="btn btn-info">
             Show Company
           </button>
         </div>
       </div>
 
-      {showModal ? <Modal actions={toggleShowModal} /> : null}
+      {show ? <Modal object={company} /> : null}
     </div>
   );
 };

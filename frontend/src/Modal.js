@@ -1,15 +1,9 @@
-import React, { useState } from "react";
-import useToggleState from "./useToggleState";
+import React from "react";
 import { useParams } from "react-router-dom";
 import CompanyDetailModal from "./companies/CompanyDetailModal.js";
 import JobDetailModal from "./jobs/JobDetailModal.js";
 
-const Modal = () => {
-  const [showModal, toggleShowModal] = useState(true);
-  const toggle = () => {
-    toggleShowModal(!showModal);
-  };
-
+const Modal = ({ object }) => {
   const { jobid } = useParams();
 
   return (
@@ -17,9 +11,9 @@ const Modal = () => {
       <div className="modal-dialog">
         <div className="modal-content">
           {jobid ? (
-            <JobDetailModal actions={toggle} />
+            <JobDetailModal job={object} />
           ) : (
-            <CompanyDetailModal actions={toggle} />
+            <CompanyDetailModal company={object} />
           )}
         </div>
       </div>
