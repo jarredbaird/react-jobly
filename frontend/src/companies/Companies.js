@@ -5,10 +5,20 @@ import ModalContext from "../ModalContext.js";
 import JoblyApi from "../api/api";
 
 const Companies = () => {
-  const INITIAL_STATE = [];
-  const [companies, setCompanies] = useShowProp(INITIAL_STATE);
+  const [companies, setCompanies] = useShowProp([
+    {
+      handle: "anderson-arias-morrow",
+      name: "Anderson, Arias and Morrow",
+      description:
+        "Somebody program how I. Face give away discussion view act inside. Your official relationship administration here.",
+      numEmployees: 245,
+      logoUrl: "/logos/logo3.png",
+    },
+  ]);
+  setCompanies(companies);
+  debugger;
 
-  useEffect(function getCompaniesOnLoad() {
+  useEffect(() => {
     find();
   }, []);
 
