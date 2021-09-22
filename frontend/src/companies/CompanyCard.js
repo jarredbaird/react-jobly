@@ -4,18 +4,11 @@ import Modal from "../Modal.js";
 import ModalContext from "../ModalContext";
 
 const CompanyCard = ({ company }) => {
-  const {
-    handle,
-    name,
-    description,
-    num_employees,
-    logo_url = "",
-    show,
-  } = company;
-  const [companies, setCompanies] = useContext(ModalContext);
+  const { handle, name, description } = company;
+  const { shownCompany, setShownCompany } = useContext(ModalContext);
 
-  const toggleModal = () => {
-    setCompanies(companies, handle, !show);
+  const showThisModal = () => {
+    setShownCompany(handle);
   };
 
   return (
@@ -29,13 +22,17 @@ const CompanyCard = ({ company }) => {
           aria-label="Basic mixed styles example"
         >
           <button className="btn btn-primary">See Jobs</button>
-          <button onClick={toggleModal} type="button" className="btn btn-info">
+          <button
+            onClick={showThisModal}
+            type="button"
+            className="btn btn-info"
+          >
             Show Company
           </button>
         </div>
       </div>
 
-      {show ? <Modal object={company} /> : null}
+      {handle === shownCompany ? <Modal object={company} /> : null}
     </div>
   );
 };

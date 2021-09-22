@@ -1,22 +1,13 @@
 import React, { useEffect, useState } from "react";
 import CompanyCard from "./CompanyCard.js";
-import useShowProp from "../useShowProp.js";
+import useModalToShow from "../useModalToShow.js";
 import ModalContext from "../ModalContext.js";
 import JoblyApi from "../api/api";
 
 const Companies = () => {
-  const [companies, setCompanies] = useShowProp([
-    {
-      handle: "anderson-arias-morrow",
-      name: "Anderson, Arias and Morrow",
-      description:
-        "Somebody program how I. Face give away discussion view act inside. Your official relationship administration here.",
-      numEmployees: 245,
-      logoUrl: "/logos/logo3.png",
-    },
-  ]);
-  setCompanies(companies);
-  debugger;
+  const [companies, setCompanies] = useState([{}]);
+  const [shownCompany, setShownCompany, hideCompanyModal] =
+    useModalToShow(null);
 
   useEffect(() => {
     find();
@@ -28,11 +19,19 @@ const Companies = () => {
   }
 
   return (
-    <ModalContext.Provider value={{ companies, setCompanies }}>
-      {companies.map((company) => {
-        return <CompanyCard key={company.handle} company={company} />;
-      })}
-    </ModalContext.Provider>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <ModalContext.Provider
+        value={{ shownCompany, setShownCompany, hideCompanyModal }}
+      >
+        {companies.map((company) => {
+          return (
+            <div className="col">
+              <CompanyCard key={company.handle} company={company} />
+            </div>
+          );
+        })}
+      </ModalContext.Provider>
+    </div>
   );
 };
 
